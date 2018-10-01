@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend/home');
 });
 
 Route::get('/index', function () {
@@ -30,7 +30,7 @@ Route::get('/dashboard', function () {
 
 Auth::routes();
 
-Route::get('home/auth', 'HomeController@index')->name('home');
+Route::get('/auth', 'HomeController@index')->name('home');
 
 
 
