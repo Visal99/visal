@@ -11,26 +11,19 @@
 |
 */
 
+//:::::::::::::>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Frontend
 Route::get('/', function () {
-    return view('frontend/home');
+	    return Redirect::intended('kh/home');
 });
 
-Route::get('/index', function () {
-    return view('frontend/index');
-});
+Route::group(['namespace' => 'Frontend'], function () {
 
-Route::get('/home', function () {
-    return view('frontend/home');
-});
-Route::get('/dashboard', function () {
-    return view('user/test');
+	require(__DIR__.'/frontend/main.php');
+
 });
 
 
-
-Auth::routes();
-
-Route::get('/auth', 'HomeController@index')->name('home');
-
-
-
+//:::::::::::::>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Control Panel
+Route::group(['as' => 'cp.', 'prefix' => 'cp', 'namespace' => 'CP'], function() {
+	require(__DIR__.'/cp/main.php');
+});

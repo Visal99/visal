@@ -1,0 +1,63 @@
+<?php $__env->startSection('section-title', "User's Permision"); ?>
+<?php $__env->startSection('tab-active-system-permision', 'active'); ?>
+<?php $__env->startSection('tab-css'); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('tab-js'); ?>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.item').click(function(){
+			check_id = $(this).attr('for');
+			permision_id = $("#"+check_id).attr('permision-id');
+			features(permision_id);
+		})
+	})
+	function features(permision_id){
+		$.ajax({
+		        url: "<?php echo e(route($route.'.check-system-permision')); ?>?user_id=<?php echo e($id); ?>&permision_id="+permision_id,
+		        type: 'GET',
+		        data: { },
+		        success: function( response ) {
+		            if ( response.status === 'success' ) {
+		            	toastr.success(response.msg);
+		            }else{
+		            	swal("Error!", "Sorry there is an error happens. " ,"error");
+		            }
+		        },
+		        error: function( response ) {
+		           swal("Error!", "Sorry there is an error happens. " ,"error");
+		        }
+		});
+	}
+</script>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('tab-content'); ?>
+	<br />
+	<?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cateogry): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+		
+		<h4><?php echo e($cateogry->title); ?></h4>
+		<?php ( $permisions = $cateogry->permisions ); ?>
+		<div class="row m-t-lg">
+			<?php $__currentLoopData = $permisions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $permision): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+				<?php ( $check = "" ); ?>
+		        <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+		            <?php if($row->permision_id == $permision->id): ?>
+		                <?php ( $check = "checked" ); ?>
+		            <?php endif; ?>
+		        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+				<div class="col-sm-6 col-sm-4 col-md-3 col-lg-3">
+					<div class="checkbox-bird">
+						<input type="checkbox" permision-id="<?php echo e($permision->id); ?>" id="permision-<?php echo e($permision->id); ?>" <?php echo e($check); ?>>
+						<label class="item" for="permision-<?php echo e($permision->id); ?>"><?php echo e($permision->title); ?></label>
+					</div>
+				</div>
+			<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+		</div>
+		<hr />
+	<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('cp.user.user.tabForm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

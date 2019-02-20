@@ -1,0 +1,6 @@
+ <ul class="list-group font-i2">
+      <li class="list-group-item @if( isset($subActive)  && $subActive == 'mission-and-vision') sub-menu-active  @endif" style="border-top:0px"><a href="{{ route('mission-and-vision', $locale)}}"> <i class=""></i> {{__('web.mission-and-vision')}}</a></li>
+      <li class="list-group-item @if( isset($subActive)  && $subActive == 'the-senior-minister') sub-menu-active @endif" > <a href="{{ route('the-senior-minister', $locale)}}"> <i class=""></i> {{__('web.the-senior-minister')}}</a></li>
+      <li class="list-group-item @if( isset($subActive)  && $subActive == 'message-from-minister') sub-menu-active @endif" ><a href="{{ route('message-from-minister', $locale)}}"> <i class=""></i> {{__('web.message-from-minister')}}</a></li>
+      <li class="list-group-item @if( isset($subActive)  && $subActive == 'organization-chart' ) sub-menu-active @endif"   ><a href="{{ route('organization-chart', $locale)}}"> <i class=""></i> {{__('web.organization-chart')}}</a></li>
+  </ul>

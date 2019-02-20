@@ -1,0 +1,39 @@
+@extends('user/layouts.app')
+@section('title')
+	Contact: @yield('section-title')
+@endsection
+@section('active-main-menu-contact', 'opened')
+@section ('appheadercss')
+	@yield('section-css')
+@endsection
+
+
+@section ('appbottomjs')
+	@yield('section-js')
+@endsection
+
+@section ('page-content')
+	<header class="page-content-header">
+		<div class="container-fluid">
+			<div class="tbl">
+				<div class="tbl-row">
+					<div class="tbl-cell">
+						<h4>Contact <span> <i class="fa fa-long-arrow-right"></i> @yield('section-title')</span></h4> 
+					</div>
+					<div class="tbl-cell tbl-cell-action">
+					@if( $contact->has_departments == 1 )
+						<a href="{{ route( $route.'.list', $contact->id) }}"  class="tabledit-delete-button btn btn-sm btn-primary" style="float: none;   @yield("display-btn-back") "><span class="fa fa-arrow-left"></span></a>
+						<a href="{{ route( $route.'.create', $contact->id) }}"  class="tabledit-delete-button btn btn-sm btn-primary" style="float: none;   @yield("display-btn-add-new") "><span class="fa fa-plus"></span></a>
+					@endif
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<div class="container-fluid">
+		<div class="box-typical box-typical-padding">
+			@yield('section-content')
+		</div>	
+	</div>
+
+@endsection

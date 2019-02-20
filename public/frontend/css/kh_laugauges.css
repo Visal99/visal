@@ -1,0 +1,95 @@
+
+h1,h2,h3,h4,h5,h6{
+  
+  line-height: 1.25em;
+  font-weight: normal;
+  color:#003399;
+}
+a,p,body{
+  
+}
+.text{
+  
+}
+.main-menu .navigation > li > a {
+    font-size: 17px;
+    font-weight: 600;
+}
+.main-menu .navigation > li > ul > li > a{
+	font-size:15px;
+}
+.blog-post.style-two .content-column .inner .upper-box h3{
+	
+}
+.kh_font{
+	
+}
+.sec-title .text p {
+    font-weight: 600;
+}
+.sec-title h2 {
+    font-weight: 600;
+}
+.info-boxed .inner h4 {
+    font-weight: 600;
+
+}
+.page-header h1 {
+    font-weight: 600;
+}
+.main-footer h2 {
+    font-weight: 600;
+}
+.view_more {
+    font-weight: 600;
+}
+.citizen h3 a {
+    font-style: normal;
+    line-height: 1.5;
+    font-weight: 600;
+}
+.sectin-cnt h4 {
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+.lauguagbold{
+  font-weight: 600;
+}
+.upper-box1 h3 a {
+    font-size: 16px;
+    font-weight: 600;
+}
+.upper-box11 h3 a {
+    font-size: 16px;
+    font-weight: 600;
+}
+.upper-box19 h3 a {
+    font-size: 16px;
+    font-weight: 600;
+}
+.sticky-header .main-menu .navigation > li > a {
+    color: rgba(255, 255, 255, 0.9);
+    background: none;
+    border: 0px;
+    margin: 0px 0px;
+    padding: 15px 15px !important;
+    font-weight: 600;
+    font-size: 16px;
+}
+@media only screen and (max-width:916px) and (min-width:843px){
+    .main-menu .navigation > li > a {
+    font-size: 14px;
+    font-weight: 600;
+}
+}
+@media only screen and (max-width:843px) and (min-width:769px){
+    .main-menu .navigation > li > a {
+    font-size: 14px;
+    font-weight: 600;
+}
+.language {
+    padding-top: 12px;
+    float: right !important;
+}
+}

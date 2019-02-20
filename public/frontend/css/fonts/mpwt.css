@@ -1,0 +1,31 @@
+@font-face {
+    font-family: 'KhmerOSsys';
+    src: url('fonts/KhmerOSsys.eot');
+    src: url('fonts/KhmerOSsys.eot') format('embedded-opentype'),
+         url('fonts/KhmerOSsys.woff2') format('woff2'),
+         url('fonts/KhmerOSsys.woff') format('woff'),
+         url('fonts/KhmerOSsys.ttf') format('truetype'),
+         url('fonts/KhmerOSsys.svg#KhmerOSsys') format('svg');
+}
+
+@font-face {
+    font-family: 'KhmerOSmuol';
+    src: url('fonts/KhmerOSmuol.eot');
+    src: url('fonts/KhmerOSmuol.eot') format('embedded-opentype'),
+         url('fonts/KhmerOSmuol.woff2') format('woff2'),
+         url('fonts/KhmerOSmuol.woff') format('woff'),
+         url('fonts/KhmerOSmuol.ttf') format('truetype'),
+         url('fonts/KhmerOSmuol.svg#KhmerOSmuol') format('svg');
+}
+
+@font-face {
+    font-family: 'OpenSans';
+    src: url('fonts/OpenSansRegular.eot');
+    src: url('fonts/OpenSansRegular.eot') format('embedded-opentype'),
+         url('fonts/OpenSansRegular.woff2') format('woff2'),
+         url('fonts/OpenSansRegular.woff') format('woff'),
+         url('fonts/OpenSansRegular.ttf') format('truetype'),
+         url('fonts/OpenSansRegular.svg#OpenSansRegular') format('svg');
+}
+
+

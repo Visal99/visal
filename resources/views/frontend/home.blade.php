@@ -1,966 +1,294 @@
 @extends('frontend.layouts.master')
-@section('title')
-  Home 1
+
+@section('title', __('web.welcome'))
+@section('description', $defaultData['seo']['description'])
+@section('image', $defaultData['seo']['image'])
+
+@section('active-home', 'active')
+
+
+@section ('appbottomjs')
+<style type="text/css">
+   /* .page-header h1{
+        padding-bottom:20px;
+    }*/
+</style>
 @endsection
 
-@section('content')
-  <section class="g-pb-100  g-py-15">
-    <div class="container">
-      <!-- News Section 1 -->
-      <div class="row g-mb-60">
-        <!-- Articles Content -->
-        <div class="col-lg-9 g-mb-50 g-mb-0--lg">
-          <!-- Latest News -->
-          <div class="g-mb-50">
-            <div class="u-heading-v3-1 g-mb-30">
-              <h2 class="h5 u-heading-v3__title g-font-primary g-font-weight-700 g-color-gray-dark-v1 text-uppercase g-brd-primary">Latest News</h2>
-            </div>
-
+@section ('content')
+    
+    <!--Minister's Message-->
+        <div class="container">
             <div class="row">
-              <!-- Article (Leftside) -->
-              <div class="col-lg-7 g-mb-50 g-mb-0--lg">
-                <article>
-                  <figure class="u-shadow-v25 g-pos-rel g-mb-20">
-                    <img class="img-fluid w-100" src="img-temp/500x450/t1.jpg" alt="Image Description">
+                <div class="col-lg-8 col-sm-12​ padd-t-b">
+                    @if($greeting)
+                    <div class="">
+                        <div class="image-column">
+                            <div class="image img_welcome">
+                                <div class="sec-title text-center">
+                                    <img src="{{ asset($greeting->img) }}" class="full-width" alt="" />
 
-                    <figcaption class="g-pos-abs g-top-20 g-left-20">
-                      <a class="btn btn-xs u-btn-teal text-uppercase rounded-0" href="#!">iOS</a>
-                    </figcaption>
-                  </figure>
+                                    <a href="{{ $greeting->link }}">
+                                        <div class="wrap_cl2">
+                                            <h2 class="ms_title text-center" style="color:white;">{{ $greeting->title }}</h2>
+                                            <div class="ct-ms text-center" style="color:white;">
+                                                <p>{!! $greeting->description !!}</p>
+                                                @if($greeting->link != "")
+                                                <a href="{{ $greeting->link }}">
+                                                <span class="ms_read view_more">{{ __('web.continue-reading') }}<i class="fa-ms fa fa-angle-right" aria-hidden="true"></i></span>
+                                                </a>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </a>
 
-                  <h3 class="h4 g-mb-10">
-                    <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#!">Exclusive interview with InVision's CEO</a>
-                  </h3>
-
-                  <ul class="list-inline g-color-gray-dark-v4 g-font-size-12">
-                    <li class="list-inline-item">
-                      <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">Visal Chin</a>
-                    </li>
-                    <li class="list-inline-item">/</li>
-                    <li class="list-inline-item">
-                      July 20, 2017
-                    </li>
-                    <li class="list-inline-item">/</li>
-                    <li class="list-inline-item">
-                      <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
-                        <i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-1"></i> 24
-                      </a>
-                    </li>
-                  </ul>
-
-                  <p class="g-color-gray-dark-v2">Clark Valberg is the founder and CEO of InVision. If you are a designer, you have probably gotten. If you are a designer, you have probably gotten.</p>
-                  <a class="g-font-size-12" href="#!">Read More..</a>
-                </article>
-              </div>
-              <!-- End Article (Leftside) -->
-
-              <!-- Article (Rightside) -->
-              <div class="col-lg-5">
-                <!-- Article -->
-                <article class="media">
-                  <a class="d-flex u-shadow-v25 align-self-center mr-3" href="#!">
-                    <img class="g-width-80 g-height-80" src="img-temp/230x230/next_ipad.jpg" alt="Image Description">
-                  </a>
-
-                  <div class="media-body">
-                    <h3 class="h6">
-                      <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#!">Best dessert recipes for breakfast which will make your day</a>
-                    </h3>
-
-                    <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
-                      <li class="list-inline-item">
-                        July 20, 2017
-                      </li>
-                      <li class="list-inline-item">/</li>
-                      <li class="list-inline-item">
-                        <a class="g-color-gray-dark-v4 g-text-underline--none--hover" href="#!">
-                          <i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-1"></i> 18
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </article>
-                <!-- End Article -->
-
-                <hr class="g-brd-gray-light-v4 g-my-25">
-
-                <!-- Article -->
-                <article class="media">
-                  <a class="d-flex u-shadow-v25 align-self-center mr-3" href="#!">
-                    <img class="g-width-80 g-height-80" src="img-temp/230x230/next_ipad.jpg" alt="Image Description">
-                  </a>
-
-                  <div class="media-body">
-                    <h3 class="h6">
-                      <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#!">Stylish things to do, see and purchase only this week</a>
-                    </h3>
-
-                    <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
-                      <li class="list-inline-item">
-                        July 16, 2017
-                      </li>
-                      <li class="list-inline-item">/</li>
-                      <li class="list-inline-item">
-                        <a class="g-color-gray-dark-v4 g-text-underline--none--hover" href="#!">
-                          <i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-1"></i> 31
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </article>
-                <!-- End Article -->
-
-                <hr class="g-brd-gray-light-v4 g-my-25">
-
-                <!-- Article -->
-                <article class="media">
-                  <a class="d-flex u-shadow-v25 align-self-center mr-3" href="#!">
-                    <img class="g-width-80 g-height-80" src="img-temp/230x230/next_ipad.jpg" alt="Image Description">
-                  </a>
-
-                  <div class="media-body">
-                    <h3 class="h6">
-                      <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#!">Government plans to test new primary school pupils and teachers..</a>
-                    </h3>
-
-                    <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
-                      <li class="list-inline-item">
-                        July 07, 2017
-                      </li>
-                      <li class="list-inline-item">/</li>
-                      <li class="list-inline-item">
-                        <a class="g-color-gray-dark-v4 g-text-underline--none--hover" href="#!">
-                          <i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-1"></i> 24
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </article>
-                <!-- End Article -->
-
-                <hr class="g-brd-gray-light-v4 g-my-25">
-
-                <!-- Article -->
-                <article class="media">
-                  <a class="d-flex u-shadow-v25 align-self-center mr-3" href="#!">
-                    <img class="g-width-80 g-height-80" src="img-temp/230x230/img3.jpg" alt="Image Description">
-                  </a>
-
-                  <div class="media-body">
-                    <h3 class="h6">
-                      <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#!">Things to do - see and purchase only stylish stuff this week</a>
-                    </h3>
-
-                    <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
-                      <li class="list-inline-item">
-                        July 16, 2017
-                      </li>
-                      <li class="list-inline-item">/</li>
-                      <li class="list-inline-item">
-                        <a class="g-color-gray-dark-v4 g-text-underline--none--hover" href="#!">
-                          <i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-1"></i> 31
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </article>
-                <!-- End Article -->
-                <hr class="g-brd-gray-light-v4 g-my-25">
-
-                <!-- Article -->
-                <article class="media">
-                  <a class="d-flex u-shadow-v25 align-self-center mr-3" href="#!">
-                    <img class="g-width-80 g-height-80" src="img-temp/230x230/img3.jpg" alt="Image Description">
-                  </a>
-
-                  <div class="media-body">
-                    <h3 class="h6">
-                      <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#!">Things to do - see and purchase only stylish stuff this week</a>
-                    </h3>
-
-                    <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
-                      <li class="list-inline-item">
-                        July 16, 2017
-                      </li>
-                      <li class="list-inline-item">/</li>
-                      <li class="list-inline-item">
-                        <a class="g-color-gray-dark-v4 g-text-underline--none--hover" href="#!">
-                          <i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-1"></i> 31
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </article>
-                <!-- End Article -->
-              </div>
-              <!-- End Article (Rightside) -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+                </div>
+                <div class="col-lg-4 col-sm-12 padd-t-b">
+                    <div class="content-column">
+                        <div class="page-header citiz">
+                            <h1 class="text-center">{{__('web.public-services')}}</h1>
+                        </div>
+                        <div class="">
+                            <div class="row citizen">
+                                @if(isset($defaultData['publicServices'])) 
+                                @php($publicServices = $defaultData['publicServices'])
+                                @php($i = 0)
+                                @foreach($publicServices as $row)
+                                <div class="museum-block1 col-lg-6 col-md-4 col-sm-4 col-xs-6 @if($i % 2 == 0) padding5-right @else padding5-left  @endif @php($i++) ">
+                                    <div class="inner-box1">
+                                        <div class="icon-box1">
+                                            <a href="{{ route('public-services', ['locale'=>$locale, 'slug'=>$row->slug]) }}"> <img src="{{ asset ($row->icon)}}" class="img img-responsive margin_au"> </a>
+                                            <h3><a href="{{ route('public-services', ['locale'=>$locale, 'slug'=>$row->slug]) }}" >{{$row->abbre}}</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <!-- End Latest News -->
-
-          <!-- Breaking News -->
-
-          <!-- End Breaking News -->
-
-          <!-- Featured Articles -->
-
-          <!-- End Articles -->
-
-          <!-- Recent Videos -->
-
-
-
-          <!-- End Recent Videos -->
-
-          <div id="stickyblock-end"></div>
         </div>
-        <!-- End Articles Content -->
+        <!-- Minister's Messag -->
+      
+        <!--Contact Information-->
+        <section class="container padd-t-b">
+            <div class="wrap_auto_next automations simple-border" style="">
+                <div class="row info-boxes clearfix">
+                    <!--Info Boxed-->
+                    <div class="col-md-12">
+                        <div class="info-boxed col-lg-4 col-md-12 col-sm-12 col-xs-12 info01">
+                            <div class="inner">
+                                <div class="call-pls-title">
+                                    <h4>{{__('web.contact-info')}} </h4>
+                                </div>
+                                <div class="call-pls-body grey1">
+                                    <div class="wrap_inner1">
+                                        <span data-toggle="modal" data-target="#exampleModalCenter"><a>{{__('web.phone-detail')}}</a></span>
+                                        <br />
+                                        <span><a href="mailto:info@mpwt.gov.kSubject=Hello%20again" target="_top">{{__('web.email')}}: info@mpwt.gov.kh</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Info Boxed-->
+                        <div class="info-boxed col-lg-4 col-md-12 col-sm-12 col-xs-12 info02">
+                            <div class="inner">
+                                <div class="call-pls-title">
+                                    <h4>{{__('web.working-hours')}} </h4>
+                                </div>
+                                <div class="call-pls-body grey1">
+                                    <div class="wrap_inner2">
+                                        <span>{{__('web.open-days')}}</span>
+                                        <br />
+                                        <span>{{__('web.open-hours')}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Info Boxed-->
+                        <div class="no-b info-boxed col-lg-4 col-md-12 col-sm-12 col-xs-12 info03">
+                            <div class="inner">
+                                <div class="call-pls-title">
+                                    <h4>{{__('web.address')}} </h4>
+                                </div>
+                                <div class="call-pls-body grey1">
+                                    <div class="wrap_inner3">
+                                        <span><a href="https://www.google.com/maps/place/Ministry+of+Public+Works+and+Transport/@11.5750805,104.9218696,18.5z/data=!4m5!3m4!1s0x31095144f3bfe905:0xa9a18d986f6c66b0!8m2!3d11.5741077!4d104.9230935">{{__('web.address-detail')}}</a></span>
+                                    </div>
+                                </div>
 
-        <!-- Sidebar -->
-        <div class="col-lg-3">
-          <!-- Useful Links -->
-
-          <!-- End Useful Links -->
-
-
-          <!-- Social Links -->
-          <div class="g-mb-50">
-            <div class="u-heading-v3-1 g-mb-30">
-              <h2 class="h5 u-heading-v3__title g-font-primary g-font-weight-700 g-color-gray-dark-v1 text-uppercase g-brd-primary">Social Links</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <ul class="list-unstyled mb-0">
-              <li class="d-flex align-items-center justify-content-between g-mb-20">
-                <a class="d-flex align-items-center u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#!">
-                            <span class="u-icon-v3 u-icon-size--xs u-shadow-v25 g-font-size-12 g-bg-facebook g-bg-facebook--hover g-color-white rounded-circle g-mr-10" href="#!">
-                              <i class="fa fa-facebook"></i>
-                            </span>
-                  Like
-                </a>
-                <span class="js-counter d-block g-color-gray-dark-v4">103832</span>
-              </li>
-              <li class="d-flex align-items-center justify-content-between g-mb-20">
-                <a class="d-flex align-items-center u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#!">
-                            <span class="u-icon-v3 u-icon-size--xs u-shadow-v25 g-font-size-12 g-bg-lightred g-bg-lightred--hover g-color-white rounded-circle g-mr-10" href="#!">
-                              <i class="fa fa-google-plus"></i>
-                            </span>
-                  Add to Circle
-                </a>
-                <span class="js-counter d-block g-color-gray-dark-v4">47192</span>
-              </li>
-
-
-              <li class="d-flex align-items-center justify-content-between">
-                <a class="d-flex align-items-center u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#!">
-                            <span class="u-icon-v3 u-icon-size--xs u-shadow-v25 g-font-size-12 g-bg-twitter g-bg-twitter--hover g-color-white rounded-circle g-mr-10" href="#!">
-                              <i class="fa fa-twitter"></i>
-                            </span>
-                  Follow Us
-                </a>
-                <span class="js-counter d-block g-color-gray-dark-v4">391743</span>
-              </li>
-            </ul>
-          </div>
-          <!-- End Social Links -->
-
-          <!-- Recent Posts -->
-          <div class="g-mb-30">
-            <div class="u-heading-v3-1 g-mb-30">
-              <h2 class="h5 u-heading-v3__title g-font-primary g-font-weight-700 g-color-gray-dark-v1 text-uppercase g-brd-primary">Recent Posts</h2>
-            </div>
-
-            <!-- Article -->
-            <article class="media g-mb-30">
-              <a class="d-flex u-shadow-v25 mr-3" href="#!">
-                <img class="g-width-60 g-height-60" src="img-temp/100x100/img4.jpg" alt="Image Description">
-              </a>
-
-              <div class="media-body">
-                <h3 class="h6">
-                  <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#!">Best dessert recipes for breakfast which will..</a>
-                </h3>
-
-                <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
-                  <li class="list-inline-item">
-                    July 20, 2017
-                  </li>
-                  <li class="list-inline-item">/</li>
-                  <li class="list-inline-item">
-                    <a class="g-color-gray-dark-v4 g-text-underline--none--hover" href="#!">
-                      <i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-1"></i> 18
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </article>
-            <!-- End Article -->
-
-            <!-- Article -->
-            <article class="media g-mb-30">
-              <a class="d-flex u-shadow-v25 mr-3" href="#!">
-                <img class="g-width-60 g-height-60" src="img-temp/100x100/img5.jpg" alt="Image Description">
-              </a>
-
-              <div class="media-body">
-                <h3 class="h6">
-                  <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#!">Stylish things to do, see and purchase..</a>
-                </h3>
-
-                <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
-                  <li class="list-inline-item">
-                    July 16, 2017
-                  </li>
-                  <li class="list-inline-item">/</li>
-                  <li class="list-inline-item">
-                    <a class="g-color-gray-dark-v4 g-text-underline--none--hover" href="#!">
-                      <i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-1"></i> 31
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </article>
-            <!-- End Article -->
-
-            <!-- Article -->
-            <article class="media g-mb-30">
-              <a class="d-flex u-shadow-v25 mr-3" href="#!">
-                <img class="g-width-60 g-height-60" src="img-temp/100x100/img6.jpg" alt="Image Description">
-              </a>
-
-              <div class="media-body">
-                <h3 class="h6">
-                  <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#!">Government plans to test new primary school..</a>
-                </h3>
-
-                <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
-                  <li class="list-inline-item">
-                    July 07, 2017
-                  </li>
-                  <li class="list-inline-item">/</li>
-                  <li class="list-inline-item">
-                    <a class="g-color-gray-dark-v4 g-text-underline--none--hover" href="#!">
-                      <i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-1"></i> 24
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </article>
-            <!-- End Article -->
-
-            <!-- Article -->
-            <article class="media">
-              <a class="d-flex u-shadow-v25 mr-3" href="#!">
-                <img class="g-width-60 g-height-60" src="img-temp/100x100/img7.jpg" alt="Image Description">
-              </a>
-
-              <div class="media-body">
-                <h3 class="h6">
-                  <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#!">Top 10 Luxury Hotels - 5 Star Best Luxury Hotels</a>
-                </h3>
-
-                <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
-                  <li class="list-inline-item">
-                    July 11, 2017
-                  </li>
-                  <li class="list-inline-item">/</li>
-                  <li class="list-inline-item">
-                    <a class="g-color-gray-dark-v4 g-text-underline--none--hover" href="#!">
-                      <i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-1"></i> 46
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </article>
-            <!-- End Article -->
-          </div>
-          <!-- End Recent Posts -->
-
-          <div id="stickyblock-start" class="js-sticky-block g-sticky-block--lg g-pt-20" data-start-point="#stickyblock-start" data-end-point="#stickyblock-end">
-            <!-- Popular Videos -->
-
-            <!-- End Popular Videos -->
-
-
-          </div>
-        </div>
-        <!-- End Sidebar -->
-      </div>
-      <!-- News Section 1 -->
-
-      <!-- News Section 2 -->
-
-      <!-- News Section 2 -->
-
-      <!-- News Section 3 -->
-      <div class="row">
-        <!-- Articles Content -->
-        <div class="col-lg-9 g-mb-50 g-mb-0--lg">
-          <!-- Popular News -->
-          <div class="g-mb-60">
-            <div class="u-heading-v3-1 g-mb-30">
-              <h2 class="h5 u-heading-v3__title g-font-primary g-font-weight-700 g-color-gray-dark-v1 text-uppercase g-brd-primary">Popular News</h2>
-            </div>
-
+         <!--News and Doc-->
+        <div class="container">
             <div class="row">
-              <div class="col-lg-6 g-mb-50 g-mb-0--lg">
-                <!-- Article -->
-                <article class="g-mb-40">
-                  <figure class="u-shadow-v25 g-pos-rel g-mb-20">
-                    <img class="img-fluid w-100" src="img-temp/400x270/img11.jpg" alt="Image Description">
+                <div class="col-md-8 col-sm-12 padd-t-b">
+                    <div class="nnews">
+                        <div class="page-header">
+                            <a href="{{ route('posts', ['locale'=>$locale]) }}">
+                            <h1 class="padding-left1 font-i" >{{__('web.news')}}</h1>
+                            </a> 
+                        </div>
+                        <div class="inner-news">
+                            @if(count($press['data']->data) > 0)
+                            <div class="">
+                                @php ( $data = $press['data']->data )
+                                <div class="row inner-box">
+                                    <div class="col-lg-6 col-md-12 image-box">
+                                        <div class="image item01">
+                                          @php ( $link = route('post', ['locale'=>$locale, 'id'=>$data[0]->id]) )
+                                          @php ( $img = $data[0]->image )
+                                          <a href="{{ $link }}">
+                                            <div style="max-height:300px">
+                                                <img src="{{ $img }}" class="full-width" alt=""  />
+                                            </div>
+                                        </a>
+                                        </div>
+                                        <br>
+                                    </div>
+                                    <div class="col-lg-6  content-box">
+                                        <div class="upper-box1 ">
+                                            <i class="fa9 fa-angle-right9 " aria-hidden="true"></i>
+                                            <h3>
+                                               <a href="{{ $link }}" > @if($data[0]->source->id != 174) [{{ $data[0]->source->source }}] - @endif{{ $data[0]->title }}</a>  &nbsp;
+                                                <div class="post-time22">
+                                                    <span class="date-format">{{ $data[0]->news_date }}</span>
+                                                </div>
+                                                <div class="post-time22">
+                                                    <span class="post-type11"> <a href="{{ route('posts', ['locale'=>$locale, 'source'=>$data[0]->source->id, 'title'=>$data[0]->source->source]) }}" >{{ $data[0]->source->source }}</a> </span> 
+                                                </div>
+                                            </h3>
+                                        </div>
+                                        <div class="text news-dec">
+                                            @php($description =str_limit(strip_tags($data[0]->short_content), 120))
+                                            <p>{{ $description }}</p>
+                                        </div>
+                                        <a href="{{ $link }}"><span style="padding-bottom: 15px;" class="view_more">{{ __('web.continue-reading') }}<i class=" fa fa-angle-right"aria-hidden="true"></i></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
 
-                    <figcaption class="g-pos-abs g-top-20 g-left-20">
-                      <a class="btn btn-xs u-btn-teal text-uppercase rounded-0" href="#!">iOS</a>
-                    </figcaption>
-                  </figure>
 
-                  <h3 class="h4 g-mb-10">
-                    <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#!">10 Best tips and resources for UX/UI Designers in 2017</a>
-                  </h3>
+                            @if(count($press['data']->data) > 0)
+                            <div class="">
+                                @php ( $data = $press['data']->data )
+                                @for($i = 0 ; $i < sizeof($data); $i++)
+                                    @if( $data[$i]->pin == 0 )
+                                    <div class="row inner-box">
+                                        @php ( $link = route('post', ['locale'=>$locale, 'id'=>$data[$i]->id]) )
+                                        @php ( $img = $data[$i]->image )
+                                        <div class="  col-lg-12  content-box">
+                                            <div class="upper-box11 ">
+                                                <i class=" fa fa-angle-right " aria-hidden="true"></i>
+                                                <h3>
+                                                  <a href="{{ $link }}" >@if($data[$i]->source->id != 174) [{{ $data[$i]->source->source }}] - @endif {{ $data[$i]->title }}</a> 
+                                                  &nbsp;
+                                                  <div class="post-time22"><span class="date-format">{{ $data[$i]->news_date }}</span></div>
+                                                   <div class="post-time22">
+                                                        <span class="post-type11"> <a href="{{ route('posts', ['locale'=>$locale, 'source'=>$data[$i]->source->id, 'title'=>$data[$i]->source->source]) }}" >{{ $data[$i]->source->source }}</a> </span> 
+                                                    </div>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endif
+                                @endfor
+                            </div>
+                            @else
+                                <p>{{__('web.no-data')}}</p>
+                            @endif
+                            <div class="bd-b">
+                                <a href="{{ route('posts', ['locale'=>$locale]) }}"><span style=""class="view_more">{{ __('web.other-news') }}<i class=" fa fa-angle-right" aria-hidden="true"></i></span></a>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="ddocument padd-t-b">
+                        <div class="page-header">
+                            <a href="{{ route('documents-blank', ['locale'=>$locale]) }}"><h1 class="padding-left1 font-i">{{__('web.official-documents')}}</h1><a>
+                        </div>
+                        <div class="inner-news">
+                            @if(count($documents) > 0)
+                                @php($i = 0)
+                                @foreach($documents as $row)
+                                <div class="row content-box">
+                                    <div class="col-lg-12  content-box">
+                                        <div class=" upper-box11" @if($i == 0) style="border-top:0px"  @php($i = 2) @endif >
+                                            <div class="wrap-ct-doc">
+                                                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                                <h3><a target="_blank" href="{{ $row->google_drive_url }}" > {{ $row->title}} </a>
+                                                    <div class="post-time22">
+                                                       <span class="date-format">{{ $row->official_published_date }}</span>
+                                                        <span class="post-type11"> <a href="{{ route('documents', ['locale'=>$locale, 'category'=>$row->category->slug]) }}" >{{ $row->category->title }} </a> </span> <span class="date-format">{{ $row->event_date }}</span>
+                                                    </div>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            @endif
+                            <div class="bd-b">
+                                <a href="{{ route('documents-blank', ['locale'=>$locale]) }}"><span style="padding-bottom: 5px;"class="view_more">{{ __('web.other-documents') }}<i class=" fa fa-angle-right" aria-hidden="true"></i></span></a>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>
 
-                  <ul class="list-inline g-color-gray-dark-v4 g-font-size-12">
-                    <li class="list-inline-item">
-                      <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">Mike Coolman</a>
-                    </li>
-                    <li class="list-inline-item">/</li>
-                    <li class="list-inline-item">
-                      July 20, 2017
-                    </li>
-                    <li class="list-inline-item">/</li>
-                    <li class="list-inline-item">
-                      <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
-                        <i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-1"></i> 24
-                      </a>
-                    </li>
-                  </ul>
 
-                  <p class="g-color-gray-dark-v2">Clark Valberg is the founder and CEO of InVision. If you are a designer, you have probably gotten. If you are a designer, you have probably gotten.</p>
-                  <a class="g-font-size-12" href="#!">Read More..</a>
-                </article>
-                <!-- Article -->
+                <div class="col-md-4 col-sm-12 padd-t-b">
+                    @if(count($websites) > 0)
+                    <div class="oour-web">
+                        <div class="page-header text-center">
+                            <h1 class="font-i">{{__('web.our-websites')}}</h1>
+                        </div>
+                        <div class="inner-website">
 
-                <!-- Other Articles -->
-                <article class="media">
-                  <figure class="d-flex u-shadow-v25 mr-3 g-pos-rel">
-                    <img class="g-width-140 g-height-80" src="img-temp/200x115/img1.jpg" alt="Image Description">
+                            @foreach($websites as $row)
+                            <div class="museum-block">
+                                <div class="inner-box">
+                                    <div class="icon-box">
+                                        <a target="_blank" href="{{ $row->website }}">
+                                        <img src="{{ asset($row->logo) }}" class="img img-responsive full-width" />
+                                        </a>
+                                    </div>
+                                    <div class="link-box">
+                                        <a target="_blank" href="{{ $row->website }}">{{ $row->title }}</a>
+                                    </div>
 
-                    <figcaption class="g-pos-abs g-top-5 g-left-5">
-                      <a class="btn btn-xs u-btn-darkgray text-uppercase rounded-0" href="#!">
-                        <i class="fa fa-play g-mr-5"></i> 0:46
-                      </a>
-                    </figcaption>
-                  </figure>
+                                </div>
+                            </div>
+                            @endforeach
+                      
+                        </div>
 
-                  <div class="media-body">
-                    <h3 class="g-font-size-16">
-                      <a class="g-color-gray-dark-v1" href="#!">8 health benefits and drawbacks of coffee</a>
-                    </h3>
+                    </div>
+                    @endif
+                    <div class="ffacebook padd-t-b visible-lg">
+                        <div class="page-header text-center">
+                            <h1 class="text-center font-i">{{__('web.facebook-page')}}</h1>
+                        </div>
+                        <div class="inner-website2 museum-block-fb text-center">
+                            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fmpwt.gov.kh%2F&tabs=timeline&width=320&height=655&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="320" height="655" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+                        </div>
+                    </div>
 
-                    <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
-                      <li class="list-inline-item">
-                        July 16, 2017
-                      </li>
-                      <li class="list-inline-item">/</li>
-                      <li class="list-inline-item">
-                        <a class="g-color-gray-dark-v4 g-text-underline--none--hover" href="#!">
-                          <i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-1"></i> 31
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </article>
-                <!-- End Other Articles -->
-
-                <hr class="g-brd-gray-light-v4 g-my-25">
-
-                <!-- Other Articles -->
-                <article class="media">
-                  <figure class="d-flex u-shadow-v25 mr-3 g-pos-rel">
-                    <img class="g-width-140 g-height-80" src="img-temp/200x115/img3.jpg" alt="Image Description">
-
-                    <figcaption class="g-pos-abs g-top-5 g-left-5">
-                      <a class="btn btn-xs u-btn-darkgray text-uppercase rounded-0" href="#!">
-                        <i class="fa fa-play g-mr-5"></i> 2:14
-                      </a>
-                    </figcaption>
-                  </figure>
-
-                  <div class="media-body">
-                    <h3 class="g-font-size-16">
-                      <a class="g-color-gray-dark-v1" href="#!">Top 7 Luxury places to visit around Victoria, BC</a>
-                    </h3>
-
-                    <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
-                      <li class="list-inline-item">
-                        July 12, 2017
-                      </li>
-                      <li class="list-inline-item">/</li>
-                      <li class="list-inline-item">
-                        <a class="g-color-gray-dark-v4 g-text-underline--none--hover" href="#!">
-                          <i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-1"></i> 15
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </article>
-                <!-- End Other Articles -->
-
-                <hr class="g-brd-gray-light-v4 g-my-25">
-
-                <!-- Other Articles -->
-                <article class="media">
-                  <figure class="d-flex u-shadow-v25 mr-3 g-pos-rel">
-                    <img class="g-width-140 g-height-80" src="img-temp/200x115/img4.jpg" alt="Image Description">
-
-                    <figcaption class="g-pos-abs g-top-5 g-left-5">
-                      <a class="btn btn-xs u-btn-darkgray text-uppercase rounded-0" href="#!">
-                        <i class="fa fa-play g-mr-5"></i> 1:07
-                      </a>
-                    </figcaption>
-                  </figure>
-
-                  <div class="media-body">
-                    <h3 class="g-font-size-16">
-                      <a class="g-color-gray-dark-v1" href="#!">Top 10 Luxury Hotels - 5 Star Best Luxury Hotels</a>
-                    </h3>
-
-                    <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
-                      <li class="list-inline-item">
-                        July 11, 2017
-                      </li>
-                      <li class="list-inline-item">/</li>
-                      <li class="list-inline-item">
-                        <a class="g-color-gray-dark-v4 g-text-underline--none--hover" href="#!">
-                          <i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-1"></i> 24
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </article>
-                <!-- End Other Articles -->
-              </div>
-
-              <div class="col-lg-6 g-mb-50 g-mb-0--lg">
-                <!-- Article -->
-                <article class="g-mb-40">
-                  <figure class="u-shadow-v25 g-pos-rel g-mb-20">
-                    <img class="img-fluid w-100" src="img-temp/400x270/img12.jpg" alt="Image Description">
-
-                    <figcaption class="g-pos-abs g-top-20 g-left-20">
-                      <a class="btn btn-xs u-btn-red text-uppercase rounded-0" href="#!">Android</a>
-                    </figcaption>
-                  </figure>
-
-                  <h3 class="h4 g-mb-10">
-                    <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#!">Exclusive interview with InVision's CEO at Pixeel</a>
-                  </h3>
-
-                  <ul class="list-inline g-color-gray-dark-v4 g-font-size-12">
-                    <li class="list-inline-item">
-                      <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">Mike Coolman</a>
-                    </li>
-                    <li class="list-inline-item">/</li>
-                    <li class="list-inline-item">
-                      July 20, 2017
-                    </li>
-                    <li class="list-inline-item">/</li>
-                    <li class="list-inline-item">
-                      <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
-                        <i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-1"></i> 24
-                      </a>
-                    </li>
-                  </ul>
-
-                  <p class="g-color-gray-dark-v2">Clark Valberg is the founder and CEO of InVision. If you are a designer, you have probably gotten. If you are a designer, you have probably gotten.</p>
-                  <a class="g-font-size-12" href="#!">Read More..</a>
-                </article>
-                <!-- End Article -->
-
-                <!-- Other Articles -->
-                <article class="media">
-                  <figure class="d-flex u-shadow-v25 mr-3 g-pos-rel">
-                    <img class="g-width-140 g-height-80" src="img-temp/200x115/img5.jpg" alt="Image Description">
-
-                    <figcaption class="g-pos-abs g-top-5 g-left-5">
-                      <a class="btn btn-xs u-btn-darkgray text-uppercase rounded-0" href="#!">
-                        <i class="fa fa-play g-mr-5"></i> 1:54
-                      </a>
-                    </figcaption>
-                  </figure>
-
-                  <div class="media-body">
-                    <h3 class="g-font-size-16">
-                      <a class="g-color-gray-dark-v1" href="#!">10 Most beautiful and popular beaches in the Wrold</a>
-                    </h3>
-
-                    <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
-                      <li class="list-inline-item">
-                        July 10, 2017
-                      </li>
-                      <li class="list-inline-item">/</li>
-                      <li class="list-inline-item">
-                        <a class="g-color-gray-dark-v4 g-text-underline--none--hover" href="#!">
-                          <i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-1"></i> 42
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </article>
-                <!-- End Other Articles -->
-
-                <hr class="g-brd-gray-light-v4 g-my-25">
-
-                <!-- Other Articles -->
-                <article class="media">
-                  <figure class="d-flex u-shadow-v25 mr-3 g-pos-rel">
-                    <img class="g-width-140 g-height-80" src="img-temp/200x115/img2.jpg" alt="Image Description">
-
-                    <figcaption class="g-pos-abs g-top-5 g-left-5">
-                      <a class="btn btn-xs u-btn-darkgray text-uppercase rounded-0" href="#!">
-                        <i class="fa fa-play g-mr-5"></i> 1:35
-                      </a>
-                    </figcaption>
-                  </figure>
-
-                  <div class="media-body">
-                    <h3 class="g-font-size-16">
-                      <a class="g-color-gray-dark-v1" href="#!">5 Best cofee places with free WiFi in Victoria, BC</a>
-                    </h3>
-
-                    <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
-                      <li class="list-inline-item">
-                        July 14, 2017
-                      </li>
-                      <li class="list-inline-item">/</li>
-                      <li class="list-inline-item">
-                        <a class="g-color-gray-dark-v4 g-text-underline--none--hover" href="#!">
-                          <i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-1"></i> 28
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </article>
-                <!-- End Other Articles -->
-
-                <hr class="g-brd-gray-light-v4 g-my-25">
-
-                <!-- Other Articles -->
-                <article class="media">
-                  <figure class="d-flex u-shadow-v25 mr-3 g-pos-rel">
-                    <img class="g-width-140 g-height-80" src="img-temp/200x115/img6.jpg" alt="Image Description">
-
-                    <figcaption class="g-pos-abs g-top-5 g-left-5">
-                      <a class="btn btn-xs u-btn-darkgray text-uppercase rounded-0" href="#!">
-                        <i class="fa fa-play g-mr-5"></i> 0:28
-                      </a>
-                    </figcaption>
-                  </figure>
-
-                  <div class="media-body">
-                    <h3 class="g-font-size-16">
-                      <a class="g-color-gray-dark-v1" href="#!">Stylish things to do, buy one get 2 free</a>
-                    </h3>
-
-                    <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
-                      <li class="list-inline-item">
-                        July 08, 2017
-                      </li>
-                      <li class="list-inline-item">/</li>
-                      <li class="list-inline-item">
-                        <a class="g-color-gray-dark-v4 g-text-underline--none--hover" href="#!">
-                          <i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-1"></i> 34
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </article>
-                <!-- End Other Articles -->
-              </div>
+                </div>
             </div>
-          </div>
-          <!-- End Popular News -->
-
-          <!-- Weekly News -->
-          <div class="g-mb-60">
-            <div class="u-heading-v3-1 g-mb-30">
-              <h2 class="h5 u-heading-v3__title g-font-primary g-font-weight-700 g-color-gray-dark-v1 text-uppercase g-brd-primary">Weekly News</h2>
-            </div>
-
-            <!-- Articles -->
-            <div class="row g-mb-30">
-              <!-- Article Image -->
-              <div class="col-md-5">
-                <figure class="u-shadow-v25 g-pos-rel g-mb-20 g-mb-0--lg">
-                  <img class="img-fluid w-100" src="img-temp/400x270/img13.jpg" alt="Image Description">
-
-                  <figcaption class="g-pos-abs g-top-20 g-left-20">
-                    <a class="btn btn-xs u-btn-darkpurple text-uppercase rounded-0" href="#!">Web Design</a>
-                  </figcaption>
-                </figure>
-              </div>
-              <!-- End Article Image -->
-
-              <!-- Article Content -->
-              <div class="col-md-7 align-self-center">
-                <h3 class="h4 g-mb-15">
-                  <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#!">Exclusive interview with InVision's CEO at Pixeel Ltd.</a>
-                </h3>
-
-                <ul class="list-inline g-color-gray-dark-v4 g-font-size-12">
-                  <li class="list-inline-item">
-                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">Mike Coolman</a>
-                  </li>
-                  <li class="list-inline-item">/</li>
-                  <li class="list-inline-item">
-                    July 19, 2017
-                  </li>
-                  <li class="list-inline-item">/</li>
-                  <li class="list-inline-item">
-                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
-                      <i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-1"></i> 38
-                    </a>
-                  </li>
-                </ul>
-
-                <p class="g-color-gray-dark-v2">Pellentesque turpis lacus, a pulvinar leo ultricies ut. Ut fringilla lectus tellusimp imperdiet molestie est volutpat at. Sed viverra cursus nibh. Sed ultrices velit vitae tortor posuere ultrices.</p>
-                <a class="g-font-size-12" href="#!">Read More..</a>
-              </div>
-              <!-- End Article Content -->
-            </div>
-            <!-- End Articles -->
-
-            <!-- Articles -->
-            <div class="row g-mb-30">
-              <!-- Article Image -->
-              <div class="col-md-5">
-                <figure class="u-shadow-v25 g-pos-rel g-mb-20 g-mb-0--lg">
-                  <img class="img-fluid w-100" src="img-temp/400x270/img14.jpg" alt="Image Description">
-
-                  <figcaption class="g-pos-abs g-top-20 g-left-20">
-                    <a class="btn btn-xs u-btn-pink text-uppercase rounded-0" href="#!">Music</a>
-                  </figcaption>
-                </figure>
-              </div>
-              <!-- End Article Image -->
-
-              <!-- Article Content -->
-              <div class="col-md-7 align-self-center">
-                <h3 class="h4 g-mb-15">
-                  <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#!">10 Best Festivals Around the World in 2017</a>
-                </h3>
-
-                <ul class="list-inline g-color-gray-dark-v4 g-font-size-12">
-                  <li class="list-inline-item">
-                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">Mike Coolman</a>
-                  </li>
-                  <li class="list-inline-item">/</li>
-                  <li class="list-inline-item">
-                    July 19, 2017
-                  </li>
-                  <li class="list-inline-item">/</li>
-                  <li class="list-inline-item">
-                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
-                      <i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-1"></i> 38
-                    </a>
-                  </li>
-                </ul>
-
-                <p class="g-color-gray-dark-v2">Pellentesque turpis lacus, a pulvinar leo ultricies ut. Ut fringilla lectus tellusimp imperdiet molestie est volutpat at. Sed viverra cursus nibh. Sed ultrices velit vitae tortor posuere ultrices.</p>
-                <a class="g-font-size-12" href="#!">Read More..</a>
-              </div>
-              <!-- End Article Content -->
-            </div>
-            <!-- End Articles -->
-
-            <!-- Articles -->
-            <div class="row g-mb-30">
-              <!-- Article Image -->
-              <div class="col-md-5">
-                <figure class="u-shadow-v25 g-pos-rel g-mb-20 g-mb-0--lg">
-                  <img class="img-fluid w-100" src="img-temp/400x270/img15.jpg" alt="Image Description">
-
-                  <figcaption class="g-pos-abs g-top-20 g-left-20">
-                    <a class="btn btn-xs u-btn-darkgray text-uppercase rounded-0" href="#!">Interior Design</a>
-                  </figcaption>
-                </figure>
-              </div>
-              <!-- End Article Image -->
-
-              <!-- Article Content -->
-              <div class="col-md-7 align-self-center">
-                <h3 class="h4 g-mb-15">
-                  <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#!">Fashion's first showcase: It is a nice idea to make great design</a>
-                </h3>
-
-                <ul class="list-inline g-color-gray-dark-v4 g-font-size-12">
-                  <li class="list-inline-item">
-                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">Mike Coolman</a>
-                  </li>
-                  <li class="list-inline-item">/</li>
-                  <li class="list-inline-item">
-                    July 18, 2017
-                  </li>
-                  <li class="list-inline-item">/</li>
-                  <li class="list-inline-item">
-                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
-                      <i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-1"></i> 45
-                    </a>
-                  </li>
-                </ul>
-
-                <p class="g-color-gray-dark-v2">Ulvinar leo ultricies fringilla lectus tellusimp imperdiet molestie. Sed viverra cursus nibh. Sed ultrices velit vitae tortor posuere.</p>
-                <a class="g-font-size-12" href="#!">Read More..</a>
-              </div>
-              <!-- End Article Content -->
-            </div>
-            <!-- End Articles -->
-
-            <!-- Articles -->
-            <div class="row">
-              <!-- Article Image -->
-              <div class="col-md-5">
-                <figure class="u-shadow-v25 g-pos-rel g-mb-20 g-mb-0--lg">
-                  <img class="img-fluid w-100" src="img-temp/400x270/img16.jpg" alt="Image Description">
-
-                  <figcaption class="g-pos-abs g-top-20 g-left-20">
-                    <a class="btn btn-xs u-btn-cyan text-uppercase rounded-0" href="#!">Leisure</a>
-                  </figcaption>
-                </figure>
-              </div>
-              <!-- End Article Image -->
-
-              <!-- Article Content -->
-              <div class="col-md-7 align-self-center">
-                <h3 class="h4 g-mb-15">
-                  <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#!">Ice Cream drinks for all in 2017</a>
-                </h3>
-
-                <ul class="list-inline g-color-gray-dark-v4 g-font-size-12">
-                  <li class="list-inline-item">
-                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">Mike Coolman</a>
-                  </li>
-                  <li class="list-inline-item">/</li>
-                  <li class="list-inline-item">
-                    July 19, 2017
-                  </li>
-                  <li class="list-inline-item">/</li>
-                  <li class="list-inline-item">
-                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
-                      <i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-1"></i> 38
-                    </a>
-                  </li>
-                </ul>
-
-                <p class="g-color-gray-dark-v2">Pellentesque turpis lacus, a pulvinar leo ultricies ut. Ut fringilla lectus tellusimp imperdiet molestie est volutpat at. Sed viverra cursus nibh. Sed ultrices velit vitae tortor posuere ultrices.</p>
-                <a class="g-font-size-12" href="#!">Read More..</a>
-              </div>
-              <!-- End Article Content -->
-            </div>
-            <!-- End Articles -->
-          </div>
-          <!-- End Weekly News -->
-
-          <!-- Pagination -->
-          <nav id="stickyblock-end-1" aria-label="Page Navigation">
-            <ul class="list-inline text-center mb-0">
-              <li class="list-inline-item">
-                <a class="active u-pagination-v1__item g-width-30 g-height-30 g-brd-secondary-light-v2 g-brd-primary--active g-color-white g-bg-primary--active g-font-size-12 rounded g-pa-5" href="#!">1</a>
-              </li>
-              <li class="list-inline-item">
-                <a class="u-pagination-v1__item g-width-30 g-height-30 g-brd-transparent g-brd-primary--hover g-brd-primary--active g-color-secondary-dark-v1 g-bg-primary--active g-font-size-12 rounded g-pa-5" href="#!">2</a>
-              </li>
-              <li class="list-inline-item g-hidden-xs-down">
-                <a class="u-pagination-v1__item g-width-30 g-height-30 g-brd-transparent g-brd-primary--hover g-brd-primary--active g-color-secondary-dark-v1 g-bg-primary--active g-font-size-12 rounded g-pa-5" href="#!">3</a>
-              </li>
-              <li class="list-inline-item">
-                <span class="g-width-30 g-height-30 g-color-gray-dark-v5 g-font-size-12 rounded g-pa-5">...</span>
-              </li>
-              <li class="list-inline-item g-hidden-xs-down">
-                <a class="u-pagination-v1__item g-width-30 g-height-30 g-brd-transparent g-brd-primary--hover g-brd-primary--active g-color-secondary-dark-v1 g-bg-primary--active g-font-size-12 rounded g-pa-5" href="#!">15</a>
-              </li>
-              <li class="list-inline-item">
-                <a class="u-pagination-v1__item g-brd-secondary-light-v2 g-brd-primary--hover g-color-gray-dark-v5 g-color-primary--hover g-font-size-12 rounded g-px-15 g-py-5 g-ml-15" href="#!" aria-label="Next">
-                          <span aria-hidden="true">
-                            Next
-                            <i class="ml-2 fa fa-angle-right"></i>
-                          </span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <!-- End Pagination -->
         </div>
-        <!-- End Articles -->
-
-        <!-- Sidebar -->
-        <div class="col-lg-3">
-          <!-- Popular Tags -->
-          <div class="g-mb-20">
-            <div class="u-heading-v3-1 g-mb-30">
-              <h2 class="h5 u-heading-v3__title g-font-primary g-font-weight-700 g-color-gray-dark-v1 text-uppercase g-brd-primary">Popular Tags</h2>
-            </div>
-
-            <ul class="u-list-inline g-font-size-11 text-uppercase mb-0">
-              <li class="list-inline-item g-mb-10">
-                <a class="u-tags-v1 g-brd-around g-brd-gray-light-v4 g-bg-primary--hover g-brd-primary--hover g-color-black-opacity-0_8 g-color-white--hover rounded g-py-6 g-px-15" href="#!">Web Design</a>
-              </li>
-              <li class="list-inline-item g-mb-10">
-                <a class="u-tags-v1 g-brd-around g-brd-gray-light-v4 g-bg-primary--hover g-brd-primary--hover g-color-black-opacity-0_8 g-color-white--hover rounded g-py-6 g-px-15" href="#!">Bootstrap</a>
-              </li>
-              <li class="list-inline-item g-mb-10">
-                <a class="u-tags-v1 g-brd-around g-brd-gray-light-v4 g-bg-primary--hover g-brd-primary--hover g-color-black-opacity-0_8 g-color-white--hover rounded g-py-6 g-px-15" href="#!">SASS</a>
-              </li>
-              <li class="list-inline-item g-mb-10">
-                <a class="u-tags-v1 g-brd-around g-brd-gray-light-v4 g-bg-primary--hover g-brd-primary--hover g-color-black-opacity-0_8 g-color-white--hover rounded g-py-6 g-px-15" href="#!">Marketing</a>
-              </li>
-              <li class="list-inline-item g-mb-10">
-                <a class="u-tags-v1 g-brd-around g-brd-gray-light-v4 g-bg-primary--hover g-brd-primary--hover g-color-black-opacity-0_8 g-color-white--hover rounded g-py-6 g-px-15" href="#!">Unify</a>
-              </li>
-              <li class="list-inline-item g-mb-10">
-                <a class="u-tags-v1 g-brd-around g-brd-gray-light-v4 g-bg-primary--hover g-brd-primary--hover g-color-black-opacity-0_8 g-color-white--hover rounded g-py-6 g-px-15" href="#!">Htmlstream</a>
-              </li>
-              <li class="list-inline-item g-mb-10">
-                <a class="u-tags-v1 g-brd-around g-brd-gray-light-v4 g-bg-primary--hover g-brd-primary--hover g-color-black-opacity-0_8 g-color-white--hover rounded g-py-6 g-px-15" href="#!">Pixeel</a>
-              </li>
-              <li class="list-inline-item g-mb-10">
-                <a class="u-tags-v1 g-brd-around g-brd-gray-light-v4 g-bg-primary--hover g-brd-primary--hover g-color-black-opacity-0_8 g-color-white--hover rounded g-py-6 g-px-15" href="#!">Free Themes</a>
-              </li>
-            </ul>
-          </div>
-          <!-- End Popular Tags -->
-
-          <!-- Popular Videos -->
-          <div class="g-mb-50">
-            <article class="g-pos-rel">
-              <figure class="u-shadow-v25 g-bg-img-hero g-min-height-400" style="background-image: url(img-temp/500x650/img2.jpg);"></figure>
-
-              <span class="text-center g-pos-abs g-top-20 g-left-0">
-                          <a class="btn u-btn-red text-uppercase rounded-0" href="#!">Youtube</a>
-                          <small class="g-bg-black g-color-white g-pa-5 d-block">July 09, 2017</small>
-                        </span>
-
-              <span class="u-icon-v3 g-font-size-default g-bg-white g-color-black g-bg-gray-dark-v2--hover g-color-white--hover g-rounded-50x g-cursor-pointer g-absolute-centered">
-                          <i class="fa fa-play g-left-2"></i>
-                        </span>
-
-              <header class="g-pos-abs g-bottom-20 g-left-0">
-                <h3 class="h5 g-bg-red-opacity-0_5 g-pa-5-10--sm">
-                  <a class="g-color-white g-color-white--hover" href="#!">Traveling</a>
-                </h3>
-              </header>
-            </article>
-          </div>
-          <!-- End Popular Videos -->
-
-
-
-        </div>
-        <!-- End Sidebar -->
-      </div>
-      <!-- News Section 3 -->
-    </div>
-  </section>
 
 @endsection
-
-

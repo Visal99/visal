@@ -1,0 +1,12 @@
+@media only screen and (max-width: 1950px) and (min-width: 1200px){
+   .icon-box1 h3 a {
+    font-size: 12px;
+    color: #003399;
+    } 
+}
+@media only screen and (max-width: 341px){
+   .icon-box1 h3 a {
+    font-size: 10px;
+    color: #003399;
+    } 
+}

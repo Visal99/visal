@@ -1,181 +1,140 @@
-<div class="u-header__section u-header__section--light g-bg-white g-transition-0_3 g-py-10">
-   <nav class="js-mega-menu navbar navbar-expand-lg g-px-0">
-      <div class="container g-px-15">
-         <!-- Logo -->
-         <a class="navbar-brand g-hidden-lg-up" href="bm-classic-home-page-1.html">
-            <img src="img/logo.png" alt="Logo">
-         </a>
-         <!-- End Logo -->
+ <div class="navbar-collapse collapse clearfix">
+    <ul class="navigation clearfix">
+        <li class="@yield('active-home')"><a href="{{ route('home', $locale)}}">{{__('web.homepage')}}</a></li>
+        <li class="dropdown @yield('active-about-us')"><a href="#">{{__('web.about-ministry')}}</a>
+            <ul class="padding_ul">
+                <li @if( isset($subActive) && $subActive == 'mission-and-vision') class="sub-menu-active" @endif ><a href="{{ route('mission-and-vision', $locale)}}">{{__('web.mission-and-vision')}}</a></li>
+                <li @if( isset($subActive) && $subActive == 'the-senior-minister') class="sub-menu-active" @endif ><a href="{{ route('the-senior-minister', $locale)}}">{{__('web.the-senior-minister')}}</a></li>
+                <li @if( isset($subActive) && $subActive == 'message-from-minister') class="sub-menu-active" @endif ><a href="{{ route('message-from-minister', $locale)}}">{{__('web.message-from-minister')}}</a></li>
+                <li @if( isset($subActive) && $subActive == 'organization-chart') class="sub-menu-active" @endif ><a href="{{ route('organization-chart', $locale)}}">{{__('web.organization-chart')}}</a></li>
+            </ul>
+        </li>
 
-         <!-- Responsive Toggle Button -->
-         <button class="navbar-toggler navbar-toggler-right btn g-line-height-1 g-brd-none g-pa-0 ml-auto" type="button"
-                 aria-label="Toggle navigation"
-                 aria-expanded="false"
-                 aria-controls="navBar"
-                 data-toggle="collapse"
-                 data-target="#navBar">
-                    <span class="hamburger hamburger--slider g-pa-0">
-                      <span class="hamburger-box">
-                        <span class="hamburger-inner"></span>
-                      </span>
-                    </span>
-         </button>
-         <!-- End Responsive Toggle Button -->
+        @if(isset($defaultData['publicServices']))
+            @php($publicServices = $defaultData['publicServices'])
+            @if(count($publicServices) > 0)
+                <li class="dropdown @yield('active-public-services')"><a href="#">{{__('web.public-services')}}</a>
+                    <ul class="padding_ul">
+                        @foreach($publicServices as $row)
+                        <li @if( isset($subActive) && $subActive == $row->slug) class="sub-menu-active" @endif ><a href="{{ route('public-services', ['locale'=>$locale, 'slug'=>$row->slug])}}">{{ $row->title }}</a></li>
+                        @endforeach
+                    </ul>
+                </li>
+            @endif
+        @endif
 
-         <!-- Navigation -->
-         <div class="collapse navbar-collapse align-items-center flex-sm-row g-pt-10 g-pt-5--lg" id="navBar">
-            <ul class="navbar-nav g-font-weight-600">
-               <!-- Home - Submenu -->
-               <li class="nav-item  g-mr-10--lg g-mr-20--xl">
-                  <a id="nav-link--home" class="nav-link text-uppercase g-color-primary--hover g-px-0" href="#!"
-                     aria-haspopup="true"
-                     aria-expanded="false"
-                     aria-controls="nav-submenu--home">
-                     Home
-                  </a>
-               </li>
-               <!-- End Home - Submenu -->
+        @if(isset($defaultData['publicWorks']))
+            @php($publicWorks = $defaultData['publicWorks'])
+            @if(count($publicWorks) > 0)
+                <li class="dropdown @yield('active-public-works')"><a href="#">{{__('web.public-works')}}</a>
+                    <ul class="padding_ul">
+                        @foreach($publicWorks as $row)
+                        <li @if( isset($subActive) && $subActive == $row->slug) class="sub-menu-active" @endif ><a href="{{ route('public-works', ['locale'=>$locale, 'slug'=>$row->slug])}}">{{ $row->title }}</a></li>
+                        @endforeach
+                    </ul>
+                </li>
+            @endif
+        @endif
 
-               <!-- Pages - Submenu -->
-               <li class="nav-item hs-has-sub-menu g-mx-10--lg g-mx-20--xl">
-                  <a id="nav-link--pages" class="nav-link text-uppercase g-color-primary--hover g-px-0" href="#!"
-                     aria-haspopup="true"
-                     aria-expanded="false"
-                     aria-controls="nav-submenu--pages">
-                     APPS
-                  </a>
+         @if(isset($defaultData['documentCategories']))
+            @php($documentCategories = $defaultData['documentCategories'])
+            @if(count($documentCategories) > 0)
+                <li class="dropdown @yield('active-documents')"><a href="#">{{__('web.official-documents')}}</a>
+                    <ul class="padding_ul">
+                        
+                        @for( $i =0; $i < sizeOf($documentCategories); $i++)
+                            @if(isset($documentCategories[$i]['children']))
+                                <li class="dropdown">
+                                    <a href="{{ route('documents', ['locale'=>$locale, 'category'=>'' ])}}">{{ $documentCategories[$i]['parent']->title }}</a>
+                                    <ul class="padding_ul">
+                                        @foreach( $documentCategories[$i]['children'] as $row)
+                                        <li><a href="{{ route('documents', ['locale'=>$locale, 'category'=>$row->slug ])}}"> {{ $row->title }} </a></li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            @else
+                                <li @if( isset($subActive) && $subActive == $documentCategories[$i]['parent']->slug) class="sub-menu-active" @endif ><a href="{{ route('documents', ['locale'=>$locale, 'category'=>$documentCategories[$i]['parent']->slug])}}">{{ $documentCategories[$i]['parent']->title }}</a></li>
+                            @endif
 
-                  <!-- Submenu -->
-                  <ul id="nav-submenu--pages" class="hs-sub-menu list-unstyled u-shadow-v11 g-min-width-220 g-brd-top g-brd-primary g-brd-top-2 g-mt-17"
-                      aria-labelledby="nav-link--pages">
-                     <li class="dropdown-item g-bg-secondary--hover">
-                        <a class="nav-link g-color-secondary-dark-v1" href="bm-classic-single-1.html">Mission and Vision</a>
-                     </li>
-
-
-                  </ul>
-                  <!-- End Submenu -->
-               </li>
-               <!-- End Pages - Submenu -->
-
-               <!-- TUTORIAL - Submenu -->
-               <li class="nav-item  g-mr-10--lg g-mr-20--xl">
-                  <a id="nav-link--home" class="nav-link text-uppercase g-color-primary--hover g-px-0" href="#!">
-                     TUTORIAL
-                  </a>
-               </li>
+                        
+                        @endfor
+                    </ul>
+                </li>
+            @endif
+        @endif
 
 
-                  @if (Route::has('login'))
+        @if(isset($defaultData['contacts']))
+            @php($contacts = $defaultData['contacts'])
+            @if(count($contacts) > 0)
+                <li class="dropdown @yield('active-contact-us')"><a href="#">{{__('web.contact-us')}}</a>
+                    <ul class="padding_ul">
+                        @foreach($contacts as $row)
+                           <li @if( isset($subActive) && $subActive == $row->slug ) class="sub-menu-active" @endif ><a href="{{ route('contact-us', ['locale'=>$locale, 'category'=>$row->slug])}}">{{ $row->title }}</a></li>
+                        @endforeach
+                    </ul>
+                </li>
+            @endif
+        @endif
 
-                        @auth
-                        <a id="nav-link--home" class="nav-link text-uppercase g-color-primary--hover g-px-0" href="{{ url('/home') }}">Home</a>
-                        @else
-                           <li class="nav-item  g-mr-10--lg g-mr-20--xl">
-                           <a id="nav-link--home" class="nav-link text-uppercase g-color-primary--hover g-px-0" href="{{ route('login') }}">
-                              <div class="title m-b-md">
-                                 Login
-                              </div>
-                           </a>
-                           </li>
-                           <li class="nav-item  g-mr-10--lg g-mr-20--xl">
-                           <a  id="nav-link--home" class="nav-link text-uppercase g-color-primary--hover g-px-0" href="{{ route('register') }}">Register</a>
-                           </li>
-                           @endauth
+       <!--  
+       @if(isset($defaultData['newsCategories']))
+            @php($newsCategories = $defaultData['newsCategories'])
+            @if(count($newsCategories) > 0)
+                <li class="dropdown @yield('active-news')"><a href="#">{{__('web.news')}}</a>
+                    <ul class="padding_ul">
+                        @for( $i =0; $i < sizeOf($newsCategories); $i++)
+                            @if(isset($newsCategories[$i]['children']))
+                                <li class="dropdown">
+                                    <a href="#">{{ $newsCategories[$i]['parent']->title }}</a>
+                                    <ul class="padding_ul">
+                                        @foreach( $newsCategories[$i]['children'] as $row)
+                                        <li @if( isset($subActive) && $subActive == $row->slug ) class="sub-menu-active" @endif ><a href="{{ route('news', ['locale'=>$locale, 'category'=>$row->slug ])}}"> {{ $row->title }} </a></li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            @else
+                                <li @if( isset($subActive) && $subActive == $newsCategories[$i]['parent']->slug ) class="sub-menu-active" @endif ><a href="{{ route('news', ['locale'=>$locale, 'category'=>$newsCategories[$i]['parent']->slug])}}">{{ $newsCategories[$i]['parent']->title }}</a></li>
+                            @endif
+                        @endfor
+                    </ul>
+                </li>
+            @endif
+        @endif
+        -->
 
-                  @endif
+        <li class="@yield('active-post')"><a href="{{ route('posts', $locale)}}">{{__('web.news')}}</a></li>
 
+        <li class="language visible-lg" style="padding-left:5px;">
+            <span style="float:left;padding-top:2px;">
+                <a href="{{route($defaultData['routeName'], $defaultData['enRouteParamenters'])}}">
+                    <img src="{{ asset('public/frontend/images/en.png') }}" class="img img-responsive margin_au">
+                </a>
+            </span>
+            <span style="float:right;color:#fff;margin-left:3px;">
+                <a href="{{route($defaultData['routeName'], $defaultData['enRouteParamenters'])}}">EN</a>
+            </span>
+        </li>
+        <li class="language visible-lg" style="">
+            <span style="float:left;padding-top:2px;">
+                <a href="{{route($defaultData['routeName'], $defaultData['khRouteParamenters'])}}">
+                    <img src="{{ asset('public/frontend/images/kh.png') }}" class="img img-responsive margin_au">
+                </a>
+            </span> 
+            <span style="float:right;color:#fff;margin-left:3px;">
+                <a href="{{route($defaultData['routeName'], $defaultData['khRouteParamenters'])}}" class="kh_font">ខ្មែរ</a>
+            </span>
+        </li>
 
-
-
-               {{--<div class="flex-center position-ref full-height">--}}
-                  {{--@if (Route::has('login'))--}}
-                     {{--<div class="top-right links">--}}
-                        {{--@auth--}}
-                        {{--<a href="{{ url('/home') }}">Home</a>--}}
-                        {{--@else--}}
-                           {{--<a href="{{ route('login') }}">--}}
-                              {{--<div class="title m-b-md">--}}
-                                 {{--Login--}}
-                              {{--</div>--}}
-                              {{--</a>--}}
-                           {{--<a href="{{ route('register') }}">Register</a>--}}
-                           {{--@endauth--}}
-                     {{--</div>--}}
-                  {{--@endif--}}
-
-                  {{--<div class="content">--}}
-                     {{--<div class="title m-b-md">--}}
-                        {{--Laravel--}}
-                     {{--</div>--}}
-
-                     {{--<div class="links">--}}
-                        {{--<a href="https://laravel.com/docs">Documentation</a>--}}
-                        {{--<a href="https://laracasts.com">Laracasts</a>--}}
-                        {{--<a href="https://laravel-news.com">News</a>--}}
-                        {{--<a href="https://forge.laravel.com">Forge</a>--}}
-                        {{--<a href="https://github.com/laravel/laravel">GitHub</a>--}}
-                     {{--</div>--}}
-                  {{--</div>--}}
-               {{--</div>--}}
-               <!-- End TUTORIAL - Submenu -->
-
-               <!-- Jailbreak - Submenu -->
-               <li class="nav-item hs-has-sub-menu g-mx-10--lg g-mx-20--xl">
-                  <a id="nav-link--pages" class="nav-link text-uppercase g-color-primary--hover g-px-0" href="#!"
-                     aria-haspopup="true"
-                     aria-expanded="false"
-                     aria-controls="nav-submenu--pages">
-                     JAILBREAK
-                  </a>
-
-                  <!-- Submenu -->
-                  <ul id="nav-submenu--pages" class="hs-sub-menu list-unstyled u-shadow-v11 g-min-width-220 g-brd-top g-brd-primary g-brd-top-2 g-mt-17"
-                      aria-labelledby="nav-link--pages">
-                     <li class="dropdown-item g-bg-secondary--hover">
-                        <a class="nav-link g-color-secondary-dark-v1" href="bm-classic-single-1.html">JAILBREAK NEWS</a>
-                     </li>
-                     <li class="dropdown-item g-bg-secondary--hover">
-                        <a class="nav-link g-color-secondary-dark-v1" href="bm-classic-single-1.html">JAILBREAK APPS & TWEAKS</a>
-                     </li>
-
-
-                  </ul>
-                  <!-- End Submenu -->
-               </li>
-               <!-- End Jailbreak - Submenu -->
-
-               <!-- More - Submenu -->
-               <li class="nav-item hs-has-sub-menu g-mx-10--lg g-mx-20--xl">
-                  <a id="nav-link--pages" class="nav-link text-uppercase g-color-primary--hover g-px-0" href="#!"
-                     aria-haspopup="true"
-                     aria-expanded="false"
-                     aria-controls="nav-submenu--pages">
-                     Download
-                  </a>
-
-                  <!-- Submenu -->
-                  <ul id="nav-submenu--pages" class="hs-sub-menu list-unstyled u-shadow-v11 g-min-width-220 g-brd-top g-brd-primary g-brd-top-2 g-mt-17"
-                      aria-labelledby="nav-link--pages">
-                     <li class="dropdown-item g-bg-secondary--hover">
-                        <a class="nav-link g-color-secondary-dark-v1" href="bm-classic-single-1.html">iOS Firmware</a>
-                     </li>
-                     <li class="dropdown-item g-bg-secondary--hover">
-                        <a class="nav-link g-color-secondary-dark-v1" href="bm-classic-single-1.html">Android Firmware</a>
-                     </li>
-                     <li class="dropdown-item g-bg-secondary--hover">
-                        <a class="nav-link g-color-secondary-dark-v1" href="bm-classic-single-1.html">Window</a>
-                     </li>
-
-
-                  </ul>
-                  <!-- End Submenu -->
-               </li>
-               <!-- End More - Submenu -->
-
-
-         </div>
-         <!-- End Navigation -->
-      </div>
-   </nav>
+        <li class="language visible-md visible-sm visible-xs">
+            <span>
+                <a href="{{route($defaultData['routeName'], $defaultData['khRouteParamenters'])}}" style="padding: 7px;">
+                    <img src="{{ asset('public/frontend/images/kh.png') }}" class="font_margin margin_au">
+                </a>
+                <a href="{{route($defaultData['routeName'], $defaultData['enRouteParamenters'])}}" style="padding: 5px;">
+                    <img src="{{ asset('public/frontend/images/en.png') }}" class="font_margin margin_au">
+                </a>
+            </span>
+        </li>
+    </ul>
 </div>
